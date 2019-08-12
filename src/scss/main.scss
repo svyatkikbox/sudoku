@@ -1,0 +1,18 @@
+@import 'utils/vars';
+@import 'utils/mixins';
+@import 'utils/fonts';
+
+html {
+  font-size: $mainFontSize;
+}
+
+.main-wrapper {
+  color: salmon;
+  background-image: linear-gradient(to right, #1f3d5e, #e5a9c1f3);
+  @include size(100px);
+}
+
+h1 {
+  color: aliceblue;
+  font-size: rem(32);
+}
