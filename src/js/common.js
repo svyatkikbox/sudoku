@@ -1,3 +1,3 @@
 (() => {
-  document.body.style.backgroundColor = 'black';
+  document.body.style.backgroundColor = '#414141';
 })();
