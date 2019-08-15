@@ -16,8 +16,15 @@
 }
 
 @mixin placeholder {
-  ::-webkit-input-placeholder {@content}
-  :-moz-placeholder           {@content}
-  ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}
+  ::-webkit-input-placeholder {@content};
+  :-moz-placeholder           {@content};
+  ::-moz-placeholder          {@content};
+  :-ms-input-placeholder      {@content};
+}
+
+@mixin font-face($font-family, $url) {
+  @font-face {
+      font-family: '#{$font-family}';
+      src: url('/assets/fonts/#{$url}.woff') format('woff');
+  }
 }

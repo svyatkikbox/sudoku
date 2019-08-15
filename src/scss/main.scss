@@ -1,6 +1,7 @@
 @import 'utils/vars';
 @import 'utils/mixins';
-@import 'utils/fonts';
+
+@include font-face(Nordic, Nordic);
 
 html {
   font-size: $mainFontSize;
@@ -9,4 +10,5 @@ html {
 h1 {
   color: salmon;
   font-size: rem(32);
+  font-family: Nordic;
 }

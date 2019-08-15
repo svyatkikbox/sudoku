@@ -49,7 +49,14 @@ module.exports = {
         exclude: '/node_modules/'
       },
       {
-        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        test: /\.(png|jpg|jpeg|svg|gif|webp)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
@@ -86,7 +93,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
-      },
+      }
     ]
   },
   plugins: [
@@ -100,6 +107,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/img`, to: `${PATHS.assets}img` },
+      { from: `${PATHS.src}/fonts`, to: `${PATHS.assets}fonts` },
       { from: `${PATHS.src}/static`, to: '' },
     ])
   ]
