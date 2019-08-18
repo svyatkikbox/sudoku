@@ -2,9 +2,41 @@ extends ../layout/main
 
 block variables
   - var title = 'Page 1'
-  - var description = 'Тестовая сборка webpack 4'
-  - var pageClass = 'huscvarna'
+  - var description = 'BookList'
 
 block content
-  section
-    h1 Huscvarna qwerty
+  section.booklist
+    .content-wrap
+      .alert
+        //- .error__content
+        //-   p.error__text Fill all fields
+      h1.heading Book List
+      .booklist__menu
+        form.booklist__form(action="#")
+          .booklist__form-item
+            label.booklist__form-label(for="title") Title
+            input.booklist__form-input#title(type="text", name="" placeholder="Alice in WonredLand" onfocus="this.placeholder=''" onblur="this.placeholder='Alice in WonredLand'")
+          .booklist__form-item
+            label.booklist__form-label(for="author") Author
+            input.booklist__form-input#author(type="text", name="" placeholder="Roman Babadjanyan" onfocus="this.placeholder=''" onblur="this.placeholder='Roman Babadjanyan'")
+          .booklist__form-item
+            label.booklist__form-label(for="year") Year
+            input.booklist__form-input#year(type="text", name="" placeholder="2012" onfocus="this.placeholder=''" onblur="this.placeholder='2012'")
+          .booklist__form-item
+            label.booklist__form-label(for="isbn") ISBN
+            input.booklist__form-input#isbn(type="text", name="" placeholder="438" onfocus="this.placeholder=''" onblur="this.placeholder='438'")
+          .booklist__form-item
+            button.booklist__form-add(type="submit") Add book
+      
+      .booklist__content
+        table.booklist__table
+          thead.booklist__table-head
+            tr
+              th Title
+              th Author
+              th Year
+              th isbn
+              th
+          tbody.booklist__table-body
+
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js")
