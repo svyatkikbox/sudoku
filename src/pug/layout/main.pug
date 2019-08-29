@@ -10,8 +10,4 @@ html(lang="ru")
     meta(name="description", content=description)
     title #{title}
   body(class=pageClass)
-    .wrapper
-      include ../includes/blocks/header
-      .content-wrapper
-        block content
-      include ../includes/blocks/footer
+    block content

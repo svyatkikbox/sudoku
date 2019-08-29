@@ -1,5 +1,5 @@
 {
-  "name": "undef",
+  "name": "sudoku",
   "version": "1.0.0",
   "description": "webpack template",
   "main": "index.js",
