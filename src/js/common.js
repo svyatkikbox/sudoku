@@ -1,7 +1,8 @@
-import Cell from './components/Cell'
+import Cell from './components/Cell';
+import Row from './components/Row';
 
 const randomInteger = (min, max) => {
-  let rand = min + Math.random() * (max + 1 - min);
+  const rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 };
 
@@ -27,36 +28,33 @@ function MakeMatrix() {
 
 function ShowMatrix(matrix, parent) {
   for (let i = 0; i < matrix.length; i++) {
-    const row = matrix[i];
-    const div = document.createElement('div');
+    const matrixRow = matrix[i];
+    const row = new Row();
 
-    div.classList.add('row');
+    row.classList.add('row');
 
-    for (let j = 0; j < row.length; j++) {
-      const number = row[j];
-      const span = document.createElement('span');
+    for (let j = 0; j < matrixRow.length; j++) {
+      const number = matrixRow[j];
+      const cell = new Cell({
+        classList: 'cell',
+        innerText: number,
+        id: `_${i}${j}`
+      });
 
       if (j === 2 || j === 5) {
-        span.classList.add('vertical');
+        cell.classList.add('vertical');
       }
 
       if (i === 2 || i === 5) {
-        span.classList.add('horizontal');
+        cell.classList.add('horizontal');
       }
 
-      span.classList.add('cell');
-      span.innerHTML = number;
-      div.append(span);
+      row.append(cell);
     }
-
-    document.querySelector(parent).append(div);
+    document.querySelector(parent).append(row);
   }
 }
 
 const matrix = MakeMatrix();
 
 ShowMatrix(matrix, '.board');
-
-const cell = new Cell();
-
-document.body.appendChild(cell);
