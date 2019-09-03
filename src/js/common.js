@@ -1,46 +1,50 @@
-function randomInteger(min, max) {
+const randomInteger = (min, max) => {
   let rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 }
 
 function MakeMatrix() {
-  const arr = [];
-
-  while (arr.length !== 9) {
-    let set = new Set();
-    
-    while (set.size !== 9) {
-      set.add(randomInteger(1,9));
-    }
+  const matrix = [];
   
-    arr.push(Array.from(set));
+  while (matrix.length !== 9) {
+    const row = [];
+    const range = [1,2,3,4,5,6,7,8,9];
+  
+    while (row.length !== 9) {
+      const randIndex = randomInteger(0, range.length - 1);
+
+      row.push(range[randIndex]);
+      range.splice(randIndex,1);
+    }
+    
+    matrix.push(row);
   }
 
-  return arr;
+  return matrix;
 }
 
-function ShowMatrix(arr, parent) {
-  for (let i = 0; i < arr.length; i++) {
-    const row = arr[i];
+function ShowMatrix(matrix, parent) {
+  for (let i = 0; i < matrix.length; i++) {
+    const row = matrix[i];
     const div = document.createElement('div');
 
     div.classList.add('row');
 
     for (let j = 0; j < row.length; j++) {
       const number = row[j];
-      const input = document.createElement('input');
+      const span = document.createElement('span');
       
       if (j === 2 || j === 5) {
-        input.classList.add('vertical');
+        span.classList.add('vertical');
       }
       
       if (i === 2 || i === 5) {
-        input.classList.add('horizontal');
+        span.classList.add('horizontal');
       }
     
-      input.classList.add('cell');
-      input.value = number;
-      div.append(input);
+      span.classList.add('cell');
+      span.innerHTML = number;
+      div.append(span);
       
     }
     
@@ -49,6 +53,6 @@ function ShowMatrix(arr, parent) {
 
 }
 
-let arr = MakeMatrix();
+const matrix = MakeMatrix();
 
-ShowMatrix(arr, '.board');
+ShowMatrix(matrix, '.board');
