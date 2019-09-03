@@ -1,8 +1,7 @@
 export default class Cell extends HTMLElement {
-  constructor() {
-    super();
+  connectedCallback() {
+    console.log('added');
   }
-
 }
 
 customElements.define('matrix-cell', Cell);
