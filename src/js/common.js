@@ -1,10 +1,7 @@
+import randomInteger from './utils/RandomInt';
 import Cell from './components/Cell';
 import Row from './components/Row';
 
-const randomInteger = (min, max) => {
-  const rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
-};
 
 function MakeMatrix() {
   const matrix = [];
