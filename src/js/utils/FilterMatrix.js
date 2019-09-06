@@ -23,7 +23,7 @@ export default matrix => {
         if (index === 0) {
           return;
         } else {
-          col[doubleIndex] = '?';
+          col[doubleIndex] = ' ';
         }
       });
 

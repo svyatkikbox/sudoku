@@ -4,7 +4,6 @@ export default class Row extends HTMLElement {
   }
 
   connectedCallback() {
-    this.style.display = 'block';
   }
 }
 
