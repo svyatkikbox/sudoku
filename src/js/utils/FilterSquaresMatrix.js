@@ -1,3 +1,5 @@
+import RemoveDuplicates from './RemoveDuplicates';
+
 export default matrix => {
   const sectors = {
     sector1: [],
@@ -53,6 +55,69 @@ export default matrix => {
     }
   }
 
-  console.log(sectors);
+  // Копия изначального объекта с секторами
+  const sectorsCopy = JSON.parse(JSON.stringify(sectors));
 
+  // console.log(sectorsCopy);
+
+  for (const sector in sectors) {
+    if (sectors.hasOwnProperty(sector)) {
+      RemoveDuplicates(sectors[sector]);
+    }
+  }
+
+  // Посмотрим на результат отфильтрованных секторов
+  // console.log(sectors);
+
+  // Бежим по матрице еще раз, определяем сектор, в котором находится текущий элемент
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix.length; j++) {
+      if (i < 3 && j < 3) {
+        matrix[i][j] = sectors.sector1[0];
+        sectors.sector1.shift();
+      }
+
+      if (i < 3 && (j >= 3 && j < 6)) {
+        matrix[i][j] = sectors.sector2[0];
+        sectors.sector2.shift();
+      }
+
+      if (i < 3 && j >= 6) {
+        matrix[i][j] = sectors.sector3[0];
+        sectors.sector3.shift();
+      }
+
+      if ((i >= 3 && i < 6) && j < 3) {
+        matrix[i][j] = sectors.sector4[0];
+        sectors.sector4.shift();
+      }
+
+      if ((i >= 3 && i < 6) && (j >= 3 && j < 6)) {
+        matrix[i][j] = sectors.sector5[0];
+        sectors.sector5.shift();
+      }
+
+      if ((i >= 3 && i < 6) && j >= 6) {
+        matrix[i][j] = sectors.sector6[0];
+        sectors.sector6.shift();
+      }
+
+      if (i >= 6 && j < 3) {
+        matrix[i][j] = sectors.sector7[0];
+        sectors.sector7.shift();
+      }
+
+      if (i >= 6 && (j >= 3 && j < 6)) {
+        matrix[i][j] = sectors.sector8[0];
+        sectors.sector8.shift();
+      }
+
+      if (i >= 6 && j >= 6) {
+        matrix[i][j] = sectors.sector9[0];
+        sectors.sector9.shift();
+      }
+    }
+  }
+
+  return matrix;
 }

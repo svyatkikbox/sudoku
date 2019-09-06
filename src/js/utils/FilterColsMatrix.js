@@ -42,7 +42,6 @@ export default matrix => {
     // });
 
     col = RemoveDuplicates(col);
-    console.log('вызов RemoveDuplicates');
 
     // Замена в итоговой матрице итерируемого столбца на его отфильтрованный вариант
     for (let j = 0; j < matrix[i].length; j++) {
