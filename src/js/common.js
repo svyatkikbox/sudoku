@@ -7,7 +7,7 @@ import { uniqInSector, uniqInCol, uniqInRow } from './utils/Search';
 
 //Создание матрицы с неповторяющимися цифрами в строке (!только в строке)
 const originalMatrix = MakeMatrix();
-const matrixCopy = JSON.parse(JSON.stringify(originalMatrix));
+// const matrixCopy = JSON.parse(JSON.stringify(originalMatrix));
 
 // console.log('=======================================');
 // console.log('Копия исходной матрицы');
@@ -28,9 +28,30 @@ const matrixCopy = JSON.parse(JSON.stringify(originalMatrix));
 
 ShowMatrix(originalMatrix, '.board');
 
-console.log(uniqInSector({ matrix: originalMatrix, number: 7, iSector: 0, jSector: 0, i: 2, j: 2 }));
-console.log(uniqInRow({ matrix: originalMatrix, number: 7, i: 2, j: 2 }));
-console.log(uniqInCol({ matrix: originalMatrix, number: 7, i: 2, j: 2 }));
+// console.log(uniqInSector({
+//   matrix: originalMatrix, 
+//   number: 4, 
+//   iSectorStart: 6, 
+//   jSectorStart: 6, 
+//   iSectorEnd: 8, 
+//   jSectorEnd: 8, 
+//   i: 7, 
+//   j: 7
+// }));
+
+// console.log(uniqInRow({ 
+//   matrix: originalMatrix, 
+//   number: 4, 
+//   i: 7, 
+//   j: 7 
+// }));
+
+// console.log(uniqInCol({ 
+//   matrix: originalMatrix, 
+//   number: 4, 
+//   i: 7, 
+//   j: 7 
+// }));
 
 const matrix2 = MakeMatrix2();
 console.log(matrix2);
