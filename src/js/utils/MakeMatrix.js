@@ -1,70 +1,25 @@
-import randomInteger from './RandomInt';
-import { uniqInSector, uniqInCol, uniqInRow } from './Search';
+import RowsFromSectors from './RowsFromSectors';
 
 export default () => {
-  // Главный массив, в котором лежат все строки
-  const MATRIX = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-  ];
+  const MATRIX = []; // итоговая матрица
+  const SECTORS = []; // массив всех секторов 3х3, из которого будет создаваться матрица построчно
 
-  //  В цикле формируется матрица построчно 
-  for (let i = 0; i < 9; i++) {
-    // Для каждой строки формируется массив с числами от 1 до 9
-    // из массива рандомно будут выбираться числа при помощи RandomInt
-    // После каждого удачного заполнения ячейки в строке, будет удаляться соответствующий элемент массива
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  for (let i = 1; i <= 9; i++) {
+    let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // для каждого сектора создается новый массив, из которого берутся значения
+    let sector = []; // массив, в который попадают значения для сектора
+    let index = numbers.indexOf(i); // каждый сектор начинается с новой цифры от 1 до 9
+    numbers = [...numbers.splice(index, numbers.length), ...numbers];
 
-    for (let j = 0; j < 9; j++) {
-      // В условиях проверяется нахождение итерируемого элемента матрицы
-      // на принадлежность одному из 9 секторов 3х3 в порядке слева направо, сверху вниз
+    numbers.forEach(number => {
+      sector.push(number);
+    });
 
-      // Выбираем из массива numbers рандомный элемент, который будем прогонять через проверки на правила судоку
-      if (i < 3 && j < 3) { // 1 sector
+    SECTORS.push(sector);
 
-      }
-
-      if (i < 3 && (j >= 3 && j < 6)) { // 2 sector
-
-      }
-
-      if (i < 3 && j >= 6) { // 3 sector
-
-      }
-
-      if ((i >= 3 && i < 6) && j < 3) { // 4 sector
-
-      }
-
-      if ((i >= 3 && i < 6) && (j >= 3 && j < 6)) { // 5 sector
-
-      }
-
-      if ((i >= 3 && i < 6) && j >= 6) { // 6 sector
-
-      }
-
-      if (i >= 6 && j < 3) { // 7 sector
-
-      }
-
-      if (i >= 6 && (j >= 3 && j < 6)) { // 8 sector
-
-      }
-
-      if (i >= 6 && j >= 6) { // 9 sector
-
-      }
-    }
   }
 
-  return MATRIX;
+  RowsFromSectors(SECTORS);
+
+  return SECTORS;
 
 }

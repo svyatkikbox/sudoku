@@ -11,7 +11,9 @@ const devWebpackConfig = merge(BaseWebpackConfig, {
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
-      filename: '[filename].map'
+      // filename: '[filename].map'
+      filename: '[name].map',
+      exclude: ['vendor.js']
     })
   ]
 })

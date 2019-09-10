@@ -43,3 +43,13 @@ export const uniqInCol = ({ matrix, number, i, j }) => {
 
   return true;
 }
+
+export const isUniq = ({ matrix, number, iSectorStart, jSectorStart, iSectorEnd, jSectorEnd, i, j }) => {
+  return (
+    uniqInSector({ matrix, number, iSectorStart, jSectorStart, iSectorEnd, jSectorEnd })
+    &&
+    uniqInRow({ matrix, number, i, j })
+    &&
+    uniqInCol({ matrix, number, i, j })
+  );
+}
