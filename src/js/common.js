@@ -1,7 +1,6 @@
 import MakeMatrix from './utils/MakeMatrix';
 import ShowMatrix from './utils/ShowMatrix';
 
-const originalMatrix = MakeMatrix();
-// console.log(originalMatrix);
+const Matrix = MakeMatrix();
 
-ShowMatrix(originalMatrix, '.board');
+ShowMatrix(Matrix, '.board');

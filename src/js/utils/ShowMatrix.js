@@ -25,7 +25,11 @@ export default function ShowMatrix(matrix, parent) {
       }
 
       row.append(cell);
+
     }
+
     document.querySelector(parent).append(row);
+
   }
+  
 }
