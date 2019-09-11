@@ -1,14 +1,19 @@
 import MakeMatrix from './utils/MakeMatrix';
 import ShowMatrix from './utils/ShowMatrix';
-import ShakeMatrix from './utils/ShakeMatrix';
+import { ShakeRows, ShakeCols } from './utils/ShakeMatrix';
 
 window.onload = () => {
   const Matrix = MakeMatrix();
+  
+  const copyMatrix = JSON.parse(JSON.stringify(Matrix));
+  const copyMatrix2 = JSON.parse(JSON.stringify(copyMatrix));
+
+  const MatrixShakeRows = ShakeRows(copyMatrix);
+  const MatrixShakeCols = ShakeCols(copyMatrix2);
 
   ShowMatrix(Matrix, '.board');
 
-  const copyMatrix = JSON.parse(JSON.stringify(Matrix));
-
-  ShowMatrix(ShakeMatrix(copyMatrix), '.board2');
+  ShowMatrix(MatrixShakeRows, '.board2');
+  ShowMatrix(MatrixShakeCols, '.board3');
   
 }
