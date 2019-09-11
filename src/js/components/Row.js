@@ -1,6 +1,8 @@
 export default class Row extends HTMLElement {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.classList = props.classList;
   }
 
   connectedCallback() {

@@ -1,7 +1,8 @@
 import RowsFromSectors from './RowsFromSectors';
+import ShakeMatrix from './ShakeMatrix';
 
 export default () => {
-  const SECTORS = []; // массив всех секторов 3х3, из которого будет создаваться матрица построчно
+  const sectors = []; // массив всех секторов 3х3, из которого будет создаваться матрица построчно
 
   for (let i = 1; i <= 9; i++) {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // для каждого сектора создается новый массив
@@ -13,12 +14,16 @@ export default () => {
       sector.push(number);
     });
 
-    SECTORS.push(sector);
+    sectors.push(sector);
 
   }
 
-  const MATRIX = RowsFromSectors(SECTORS);
+  const matrix = RowsFromSectors(sectors);
 
-  return MATRIX;
+  const copyMatrix = JSON.parse(JSON.stringify(matrix));
+
+  ShakeMatrix(copyMatrix);
+
+  return matrix;
 
 }
