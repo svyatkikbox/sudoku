@@ -1,5 +1,5 @@
 import RowsFromSectors from './RowsFromSectors';
-import { ShakeRows, ShakeCols } from './ShakeMatrix';
+import { ShakeRows, ShakeCols, Transposition } from './ShakeMatrix';
 
 export default () => {
   const sectors = []; // массив всех секторов 3х3, из которого будет создаваться матрица построчно
@@ -20,6 +20,10 @@ export default () => {
 
   // Базовая раскладка судоку готова
   const matrix = RowsFromSectors(sectors);
+
+  ShakeCols(matrix);
+  ShakeRows(matrix);
+  Transposition(matrix);
 
   return matrix;
 
