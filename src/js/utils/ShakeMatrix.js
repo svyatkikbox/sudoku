@@ -11,6 +11,7 @@ export const ShakeRows = (matrix) => {
   }
 
   return matrix;
+
 }
 
 export const ShakeCols = (matrix) => {
@@ -30,12 +31,13 @@ export const ShakeCols = (matrix) => {
   }
 
   return matrix;
-  
+
 }
 
-export const Transposition  = (matrix) => {
-  // транспонирование матрицы
+export const Transposition = (matrix) => {
   const Tmatrix = [];
+
+  // транспонирование матрицы
   for (let i = 0; i < matrix.length; i++) {
     Tmatrix.push([]);
     for (let j = 0; j < matrix.length; j++) {
@@ -43,5 +45,11 @@ export const Transposition  = (matrix) => {
     }
   }
 
+  // Заменяем строки исходной матрицы на строки из транспонированной 
+  for (let i = 0; i < matrix.length; i++) {
+    [...matrix[i]] = [...Tmatrix[i]];
+  }
+
   return Tmatrix;
+
 }
