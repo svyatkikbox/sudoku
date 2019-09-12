@@ -19,12 +19,13 @@ export default () => {
 
   }
 
-  let matrix = RowsFromSectors(sectors); // Базовая раскладка судоку готова
-  const shakes = RandomInt(1, 5); // кол-во перетасовок базовой матрицы генерируется
+  const matrix = RowsFromSectors(sectors); // Базовая раскладка судоку готова
+  const shakes = RandomInt(1, 4); // кол-во перетасовок базовой матрицы генерируется
 
-  ShakeRows(matrix);
-  ShakeCols(matrix);
-  Transposition(matrix);
+  for (let shake = 0; shake <= shakes; shake++) {
+    const mode = RandomInt(0, 2);
+    [ShakeRows, ShakeCols, Transposition][mode](matrix);
+  }
 
   return matrix;
 
