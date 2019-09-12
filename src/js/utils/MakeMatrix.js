@@ -20,10 +20,10 @@ export default () => {
   }
 
   const matrix = RowsFromSectors(sectors); // Базовая раскладка судоку готова
-  const shakes = RandomInt(1, 4); // кол-во перетасовок базовой матрицы генерируется
+  const shakes = RandomInt(1, 11); // кол-во перетасовок базовой матрицы генерируется
 
   for (let shake = 0; shake <= shakes; shake++) {
-    const mode = RandomInt(0, 2);
+    const mode = RandomInt(0, 2); // выбирается метод перетасовки
     [ShakeRows, ShakeCols, Transposition][mode](matrix);
   }
 

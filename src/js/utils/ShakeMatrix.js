@@ -5,7 +5,7 @@ export const ShakeRows = (matrix) => {
       continue;
     } else {
       // Например в первых трех строках меняем сначала 1 со 2, 2 с 3
-      // таким образом новый порядок строк будет 2 3 1 и т.д
+      // таким образом порядок сменится с 1 2 3 на 2 3 1 и т.д
       [matrix[i], matrix[i + 1]] = [matrix[i + 1], matrix[i]];
     }
   }
@@ -17,7 +17,7 @@ export const ShakeRows = (matrix) => {
 export const ShakeCols = (matrix) => {
   // Перемешиваем каждые три колонки между собой
   for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix.length - 1; j++) {
+    for (let j = 0; j < matrix.length - 1; j++) { // проверка для перескакиваний границ (чтобы перемешивались только внутри каждой тройки)
       if (j === 2 || j === 5) {
         continue;
       } else {
