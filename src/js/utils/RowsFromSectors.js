@@ -10,8 +10,8 @@ export default (sectors) => {
     [],
     []
   ];
-  
-  // В массиве sectors построчно хранятся элементы, которые отвечают за заполнение секторов
+
+  // В массиве sectors построчно хранятся массивы, которые отвечают за секторы
   // в порядке сверху вниз, слева направо
   // 1 4 7
   // 2 5 8
@@ -27,9 +27,9 @@ export default (sectors) => {
   // x x x | x x x | x x x
   // x x x | x x x | x x x
   for (let i = 0; i < sectors.length; i++) {
-    const firstTrio  = sectors[i].slice(0, 3);
+    const firstTrio = sectors[i].slice(0, 3);
     const secondTrio = sectors[i].slice(3, 6);
-    const thirdTrio  = sectors[i].slice(6, 9);
+    const thirdTrio = sectors[i].slice(6, 9);
 
     // первые три строки будущей матрицы образуют сектора под номерами 1 4 7
     // их индексы в массиве sectors - 0 3 6 соответственно
