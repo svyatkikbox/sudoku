@@ -2,6 +2,9 @@ import Row from '../components/Row';
 import Cell from '../components/Cell';
 
 export default function ShowMatrix(matrix, parent) {
+  // Очищаем текущую доску
+  document.querySelector(parent).innerHTML = '';
+  
   for (let i = 0; i < matrix.length; i++) {
     const matrixRow = matrix[i];
     const row = new Row({

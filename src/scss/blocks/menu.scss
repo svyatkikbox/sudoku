@@ -1,21 +1,20 @@
 .menu {
   @include size(100%, 100vh);
-  // display: flex;
   flex-direction: column;
   align-items: center;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 99999;
-  display: none;
-  visibility: hidden;
   opacity: 0;
   transition: all ease-in-out 0.5s; 
-
+  transform: translate3d(0,-100%,0);
+  
   &.show {
     display: flex;
-    visibility: visible;
     opacity: 1;
+    transform: translate3d(0,0,0);
+    background-color: #010101;
   }
   
   &__content {
@@ -54,7 +53,7 @@
     text-transform: uppercase;
     letter-spacing: 0.8px;
     outline: 0;
-    color: #fff;
+    color: $whiteText;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
     
@@ -65,5 +64,63 @@
     &:active {
       box-shadow: inset 0px 60px 22px #00d2e9;
     }
+  }
+
+  &__toggle {
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    @include size(rem(50), rem(50));
+    top: 4vw;
+    left: 6vw;
+    outline: 0;
+    z-index: 9999999;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+    span {
+      position: absolute;
+      display: block;
+      @include size(100%, rem(4));
+      margin-bottom: rem(20);
+      background-color: $whiteText;
+      transition: all ease-in-out 0.3s;
+
+      &:nth-child(1) {
+        top: 0%;
+      }
+
+      &:nth-child(2) {
+        top: 30%;
+      }
+
+      &:nth-child(3) {
+        top: 60%;
+      }
+    }
+
+    &.active {
+      span {
+        &:nth-child(1) {
+          transform: rotate(-45deg);
+        }
+        
+        &:nth-child(2) {
+          width: 0px;
+        }
+        
+        &:nth-child(3) {
+          transform: translateY(-30px) rotate(225deg);
+        }
+      }
+    }
+  }
+
+  &__warn {
+    margin-top: rem(18);
+    color: $whiteText;
   }
 }
