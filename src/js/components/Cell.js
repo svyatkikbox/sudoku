@@ -40,7 +40,7 @@ export default class Cell extends HTMLElement {
       const [i, j] = [...this.id]; // разбиваем id для получения координат ячейки
       const cellNumber = this.innerText; // получаем ее содержимое
 
-      if (!this.classList.contains('colored') && !this.classList.contains('quiz')) { // если ячейка не покрашена и не скрытая
+      if (!this.classList.contains('colored') && this.innerText !== '') { // если ячейка не покрашена и не скрытая
         const colored = document.querySelectorAll('.colored');
 
         if (colored) { // перед этим очищаем окрашенные ранее
@@ -53,7 +53,9 @@ export default class Cell extends HTMLElement {
 
         similar.forEach(cell => {
           if (cell.innerText === cellNumber) {
-            cell.classList.add('colored');
+            if (!cell.classList.contains('active')) {
+              cell.classList.add('colored');
+            }
           }
         });
 

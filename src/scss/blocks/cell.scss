@@ -34,7 +34,11 @@
     background-color: $cellQuizBg;
 
     &.active {
-      background-color: $whiteText;
+      background-color: $cellActiveBg;
     }
+  }
+
+  &.guessed {
+    pointer-events: none;
   }
 }

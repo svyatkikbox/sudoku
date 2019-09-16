@@ -1,0 +1,15 @@
+.lives {
+  position: absolute;
+  right: 6vw;
+  top: 6vw;
+  display: flex;
+  justify-content: center;
+}
+
+.live {
+  @include size(rem(30));
+  margin-left: rem(5);
+  background-image: url(/assets/img/heart.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
