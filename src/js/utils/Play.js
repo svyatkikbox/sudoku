@@ -43,6 +43,7 @@ export default function Play() {
     const Matrix = MakeMatrix(); // главная матрица
     const numbers = document.querySelectorAll('.number'); // нижняя панель с цифрами для ввода
     const copyMatrix = JSON.parse(JSON.stringify(Matrix)); // копия матрицы для контроля игры
+    const errorText = document.querySelector('.error'); // сообщения об ошибках для пользователя
 
     HideCells(Matrix, settings); // удаляет из матрицы кол-во ячеек, исходя из выбора сложности
     ShowMatrix(Matrix, '.board'); // рисуется матрица на доске
@@ -73,7 +74,10 @@ export default function Play() {
           console.log('copyMatrix:', copyMatrix);
           console.log(copyMatrix[quizMatrixPositionX][quizMatrixPositionY]);
         } else {
-          console.log('выберите ячейку для вставки значения');
+          errorText.innerText = 'Выберите ячейку для вставки значения';
+          setTimeout(() => {
+            errorText.innerText = '';
+          }, 3000);
         }
       }
     }

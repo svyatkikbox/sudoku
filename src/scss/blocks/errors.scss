@@ -1,0 +1,13 @@
+.error {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: $standartFF;
+  font-size: rem(16);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: $errorTextColor;
+  padding-top: rem(20);
+}

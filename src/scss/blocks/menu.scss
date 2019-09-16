@@ -41,6 +41,12 @@
     align-items: center;
     @include size(40%, auto);
   }
+
+  &__level-description {
+    color: $whiteText;
+    display: flex;
+    margin-top: rem(15);
+  }
   
   &__btn {
     @include size(100%, rem(60));
@@ -68,11 +74,11 @@
   }
 
   &__toggle {
-    position: relative;
+    position: absolute;
     background-color: transparent;
     border: 0;
     @include size(rem(50), rem(50));
-    top: 0;
+    top: 6vw;
     left: 6vw;
     outline: 0;
     z-index: 9999999;

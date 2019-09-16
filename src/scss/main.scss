@@ -44,6 +44,7 @@ h1 {
   text-align: center;
 }
 
-@import './blocks/menu.scss';
-@import './blocks/cell.scss';
-@import './blocks/numbers.scss';
+@import './blocks/errors';
+@import './blocks/menu';
+@import './blocks/cell';
+@import './blocks/numbers';
