@@ -1,0 +1,40 @@
+.cell {
+  @include size(rem(60));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background-color: $cellBg;
+  box-shadow: inset 0px 0px 3px 0px $cellBorder;
+  cursor: pointer;
+  font-size: rem(18);
+  font-weight: bold;
+  font-family: Nordic;
+  text-align: center;
+  color: $greenBlue;
+
+  &:hover {
+    background-color: $cellBgHover;
+  }
+
+  &.vertical {
+    border-right: 2px solid $cellBorder;
+  }
+  
+  &.horizontal {
+    border-bottom: 2px solid $cellBorder;
+  }
+  
+  &.colored {
+    background-color: $cellColoredBg;
+    color: $whiteText;
+  }
+
+  &.quiz {
+    background-color: $cellQuizBg;
+
+    &.active {
+      background-color: $whiteText;
+    }
+  }
+}

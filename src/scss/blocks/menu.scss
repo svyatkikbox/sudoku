@@ -4,6 +4,7 @@
   align-items: center;
   position: absolute;
   top: 0;
+  right: 0;
   left: 0;
   z-index: 99999;
   opacity: 0;
@@ -18,7 +19,7 @@
   }
   
   &__content {
-    @include size(90%, auto);
+    @include size(100%, 60vh);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,7 +72,7 @@
     background-color: transparent;
     border: 0;
     @include size(rem(50), rem(50));
-    top: 4vw;
+    top: 0;
     left: 6vw;
     outline: 0;
     z-index: 9999999;
