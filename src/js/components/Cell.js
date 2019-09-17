@@ -67,10 +67,6 @@ export default class Cell extends HTMLElement {
         });
       }
 
-      console.log('cellNumber:', cellNumber);
-      console.log('id:', this.id);
-      console.log('i:', i);
-      console.log('j:', j);
     });
 
   }

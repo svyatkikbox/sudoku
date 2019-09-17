@@ -77,12 +77,25 @@
     position: absolute;
     background-color: transparent;
     border: 0;
-    @include size(rem(50), rem(50));
-    top: 6vw;
+    @include size(rem(40));
+    top: 3vw;
     left: 6vw;
     outline: 0;
     z-index: 9999999;
     display: none;
+    
+    @media screen and (max-width: 600px){
+      left: 2vw;
+      top: 7vw;
+    }
+
+    @media screen and (max-width: 600px){
+      top: 4vw;
+    }
+
+    @media screen and (max-width: 425px){
+      @include size(rem(30));
+    }
 
     &.show {
       display: block;
@@ -120,7 +133,7 @@
         }
         
         &:nth-child(3) {
-          transform: translateY(-30px) rotate(225deg);
+          transform: translateY(-25px) rotate(225deg);
         }
       }
     }

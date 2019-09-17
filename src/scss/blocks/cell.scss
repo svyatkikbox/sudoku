@@ -13,6 +13,18 @@
   text-align: center;
   color: $greenBlue;
 
+  @media screen and (max-width: 991px){
+    @include size(7vw);
+  }
+
+  @media screen and (max-width: 768px){
+    @include size(10vw);
+  }
+
+  @media screen and (max-width: 425px){
+    @include size(10.5vw);
+  }
+
   &:hover {
     background-color: $cellBgHover;
   }
@@ -40,5 +52,7 @@
 
   &.guessed {
     pointer-events: none;
+    background-color: $greenBlue;
+    color: $cellBgHover;
   }
 }

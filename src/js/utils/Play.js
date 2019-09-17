@@ -51,17 +51,17 @@ export default function Play() {
 
     const Error = () => { // каждый раз после изменения текста ошибки будет запускаться setTimeout
       const errorText = document.querySelector('.error'); // сообщения об ошибках для пользователя
-      
+
       return new Proxy(errorText, {
         set(errorText, innerText, val) {
           errorText.innerText = val;
-          
+
           setTimeout(() => {
             errorText.innerText = '';
             if (val === 'Попробуй еще раз! Генерирую новую доску...' || val === 'Доска разгадана! Генерируется новая...') {
               Play();
             }
-          
+
           }, 2000);
 
           return true;
@@ -98,12 +98,10 @@ export default function Play() {
         const activeQuiz = document.querySelector('.cell.quiz.active'); // активное поле для вставки
 
         if (activeQuiz) { // если найдено активное поле
-          const numberContent = parseInt(number.innerText);
-          const [quizMatrixPositionX, quizMatrixPositionY] = [...activeQuiz.id];
+          const numberContent = parseInt(number.innerText); // значение из нижней панели
+          const [quizMatrixPositionX, quizMatrixPositionY] = [...activeQuiz.id]; // вычислянм координаты ячейки
 
-          console.log('i ', quizMatrixPositionX);
-          console.log('j ', quizMatrixPositionY);
-          console.log(numberContent);
+          activeQuiz.innerText = numberContent; // записываем выбранную цифру в активную ячейку
 
           if (numberContent !== copyMatrix[quizMatrixPositionX][quizMatrixPositionY]) { // если выбранная цифра не совпадает со значением настоящим
             if (!lives.firstChild) { // если не осталось больше жизней перезапускаем
@@ -115,19 +113,18 @@ export default function Play() {
 
           } else { // если введенное значение оказалось верным
             guessed++;
+
             activeQuiz.classList.add('guessed');
+            activeQuiz.classList.remove('active');
+            errorText.innerText = 'Отличная работа!';
 
             if (guessed === settings.difficulty) {
               errorText.innerText = 'Доска разгадана! Генерируется новая...';
             }
           }
 
-          activeQuiz.innerText = numberContent;
-
-          console.log('copyMatrix:', copyMatrix);
-          console.log(copyMatrix[quizMatrixPositionX][quizMatrixPositionY]);
         } else { // просим выбрать поле для заполнения
-          errorText.innerText = 'Выберите ячейку для вставки значения';
+          errorText.innerText = 'Выберите пустую ячейку для вставки значения';
         }
       }
     }

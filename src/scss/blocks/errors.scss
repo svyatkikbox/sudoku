@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  text-align: center;
   font-family: $standartFF;
   font-size: rem(16);
   font-weight: bold;
@@ -10,4 +11,8 @@
   letter-spacing: 0.8px;
   color: $errorTextColor;
   padding-top: rem(20);
+
+  @media screen and (max-width: 425px){
+    font-size: rem(12);
+  }
 }

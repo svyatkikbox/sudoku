@@ -15,6 +15,12 @@
   }
 }
 
+html {
+  @media screen and (max-width: 425px){
+    font-size: rem(14);
+  }
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -24,17 +30,25 @@ body {
   position: relative;
 }
 
-h1 {
+.page-title {
   font-size: rem(36);
   color: $whiteText;
   text-align: center;
   margin: rem(5) 0 rem(20) 0;
+
+  @media screen and (max-width: 600px){
+    display: none;
+  }
 }
 
 .board {
-  box-shadow: rem(0) rem(20) rem(20) rem(13) $boardShadow;
+  box-shadow: rem(0) rem(20) rem(20) rem(0) $boardShadow;
   width: fit-content;
-  margin: 7vw auto rem(30) auto;
+  margin: 5vw auto rem(30) auto;
+
+  @media screen and (max-width: 600px){
+    margin-top: 17vw;
+  }
 }
 
 .row {

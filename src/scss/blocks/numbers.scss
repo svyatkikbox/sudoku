@@ -1,3 +1,19 @@
 .numbers {
   margin-top: rem(80);
 }
+
+.number {
+  margin-left: rem(5);
+  @include size(rem(55));
+  border: 0;
+  box-shadow: 0 0 3px 0 #010000;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  @media screen and (max-width: 768px){
+    @include size(9vw);
+  }
+
+}
