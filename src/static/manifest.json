@@ -1,5 +1,10 @@
 {
-  "name": "Sudoku",
+  "name": "Sudoku Game",
+  "short_name": "Sudoku",
+  "start_url": ".",
+  "background_color": "#010000",
+  "description": " Sudoku online game",
+  "display": "standalone",
   "icons": [
     {
       "src": "\/android-icon-36x36.png",

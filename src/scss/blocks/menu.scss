@@ -134,6 +134,10 @@
         
         &:nth-child(3) {
           transform: translateY(-25px) rotate(225deg);
+          
+          @media screen and (max-width: 425px){
+            transform: translateY(-15px) rotate(225deg);
+          }
         }
       }
     }
