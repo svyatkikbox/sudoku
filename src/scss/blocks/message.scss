@@ -1,8 +1,14 @@
 .message {
-  position: absolute;
-  width: 100%;
+  max-width: rem(540);
+  min-height: rem(60);
+  padding: rem(10) rem(15);
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin: 0 auto rem(30) auto;
+  background-color: $errorBgColor;
+  border-radius: rem(4);
+  visibility: hidden;
   text-align: center;
   font-family: $standartFF;
   font-size: rem(16);
@@ -10,9 +16,6 @@
   text-transform: uppercase;
   letter-spacing: 0.8px;
   color: $errorTextColor;
-  padding-top: rem(20);
-  background-color: $errorBgColor;
-  visibility: hidden;
 
   &.show {
     visibility: visible;
@@ -20,12 +23,12 @@
 
   &.success {
     background-color: lightseagreen;
-    color: white;
+    color: $whiteText;
   }
 
   &.error {
-    background-color: crimson;
-    color: white;
+    background-color: $errorTextColor;
+    color: $whiteText;
   }
 
   @media screen and (max-width: 425px){

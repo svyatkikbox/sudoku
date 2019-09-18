@@ -29,7 +29,6 @@ export default function Play() {
       // Настройки сформированы, заново запускаем игру, чтобы произошел рендер доски
       Play();
     }
-
   }
 
   // Если запуск первый
@@ -50,20 +49,25 @@ export default function Play() {
     const lives = document.querySelector('.lives'); // кол-во жизней
     let guessed = 0; // кол-во угаданных ячеек
 
-    const Message = () => { // каждый раз после изменения текста ошибки будет запускаться setTimeout
-      const message = document.querySelector('.message'); // сообщения об ошибках для пользователя
+    const Message = () => { // Proxy для показа сообщений в момент смены текста
+      const message = document.querySelector('.message'); // сообщения для пользователя
+
       return new Proxy(message, {
         set(message, innerText, val) {
-          message.innerText = val;
+          message.innerText = val; // стандартное присвоение
           message.classList.add('show');
+
           setTimeout(() => {
             message.classList.remove('show');
-            // message.innerText = '';
-            if (val === Text.lose || val === Text.victory) {
+
+            if (val === Text.lose || val === Text.victory) { // в случае сообщения о победе/проигрыше перезапускать игру
               Play();
             }
+
           }, 2000);
-          return true;
+
+          return true; // set должен возвращать всегда true/false
+
         }
       });
     };
