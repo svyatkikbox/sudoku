@@ -6,29 +6,27 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto rem(30) auto;
-  background-color: $errorBgColor;
   border-radius: rem(4);
   visibility: hidden;
   text-align: center;
   font-family: $standartFF;
   font-size: rem(16);
-  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: $errorTextColor;
+  opacity: 0;
+  transition: all ease-in-out 0.3s;
 
   &.show {
     visibility: visible;
+    opacity: 1;
   }
 
   &.success {
-    background-color: lightseagreen;
-    color: $whiteText;
+    color: $successTextColor;
   }
 
   &.error {
-    background-color: $errorTextColor;
-    color: $whiteText;
+    color: $errorTextColor;
   }
 
   @media screen and (max-width: 425px){

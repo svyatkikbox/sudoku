@@ -47,32 +47,28 @@ export default function Play() {
     const numbers = document.querySelectorAll('.number'); // нижняя панель с цифрами для ввода
     const copyMatrix = JSON.parse(JSON.stringify(Matrix)); // копия матрицы для контроля игры
     const lives = document.querySelector('.lives'); // кол-во жизней
+    const message = document.querySelector('.message'); // сообщения для пользователя
     let guessed = 0; // кол-во угаданных ячеек
 
-    const Message = () => { // Proxy для показа сообщений в момент смены текста
-      const message = document.querySelector('.message'); // сообщения для пользователя
+    const Message = (text, classes) => { // показываем сообщение для пользователя об ошибке или успехе
+      message.innerText = text;
 
-      return new Proxy(message, {
-        set(message, innerText, val) {
-          message.innerText = val; // стандартное присвоение
-          message.classList.add('show');
+      message.classList.add('show');
+      message.classList.add(...classes);
 
-          setTimeout(() => {
-            message.classList.remove('show');
+      setTimeout(() => {
+        message.classList.remove('show');
+        message.classList.remove(...classes);
 
-            if (val === Text.lose || val === Text.victory) { // в случае сообщения о победе/проигрыше перезапускать игру
-              Play();
-            }
-
-          }, 2000);
-
-          return true; // set должен возвращать всегда true/false
-
+        if (text === Text.lose || text === Text.victory) { // в случае сообщения о победе/проигрыше перезапускать игру
+          Play();
         }
-      });
-    };
 
-    const message = Message();
+      }, 3000);
+
+      return true;
+
+    };
 
     HideCells(Matrix, settings); // удаляет из матрицы кол-во ячеек, исходя из выбора сложности
     ShowMatrix(Matrix, '.board'); // рисуется матрица на доске
@@ -107,10 +103,10 @@ export default function Play() {
 
           if (numberContent !== copyMatrix[quizMatrixPositionX][quizMatrixPositionY]) { // если выбранная цифра не совпадает со значением настоящим
             if (!lives.firstChild) { // если не осталось больше жизней перезапускаем
-              message.innerText = Text.lose;
+              Message(Text.lose, ['error']);
             } else {
               lives.firstChild.remove(); // убираем сердечко
-              message.innerText = Text.error;
+              Message(Text.error, ['error']);
             }
 
           } else { // если введенное значение оказалось верным
@@ -118,15 +114,16 @@ export default function Play() {
 
             activeQuiz.classList.remove('active');
             activeQuiz.classList.add('guessed');
-            message.innerText = Text.success;
+
+            Message(Text.success, ['success']);
 
             if (guessed === settings.difficulty) {
-              message.innerText = Text.victory;
+              Message(Text.victory, ['success']);
             }
           }
 
         } else { // просим выбрать поле для заполнения
-          message.innerText = Text.chooseEmpty;
+          Message(Text.chooseEmpty, ['error']);
         }
       }
     }
