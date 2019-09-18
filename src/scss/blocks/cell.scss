@@ -3,26 +3,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0;
   background-color: $cellBg;
-  box-shadow: inset 0px 0px 3px 0px $cellBorder;
   cursor: pointer;
-  font-size: rem(18);
-  font-weight: bold;
-  font-family: Nordic;
+  border-bottom: 1px solid $cellBorder;
+  border-right: 1px solid $cellBorder;
+  font-size: rem(26);
+  font-family: lt;
   text-align: center;
-  color: $greenBlue;
+  color: $whiteText;
 
   @media screen and (max-width: 991px){
-    @include size(7vw);
+    @include size(9vw);
   }
 
   @media screen and (max-width: 768px){
-    @include size(10vw);
-  }
-
-  @media screen and (max-width: 425px){
-    @include size(10.5vw);
+    @include size(11vw);
   }
 
   &:hover {
@@ -30,11 +25,27 @@
   }
 
   &.vertical {
-    border-right: 2px solid $cellBorder;
+    border-right: $cellBorderBoard;
   }
   
   &.horizontal {
-    border-bottom: 2px solid $cellBorder;
+    border-bottom: $cellBorderBoard;
+  }
+
+  &.top-board-border {
+    border-top: $cellBorderBoard;
+  }
+
+  &.bottom-board-border {
+    border-bottom: $cellBorderBoard;
+  }
+
+  &.left-board-border {
+    border-left: $cellBorderBoard;
+  }
+  
+  &.right-board-border {
+    border-right: $cellBorderBoard;
   }
   
   &.colored {
@@ -47,12 +58,13 @@
 
     &.active {
       background-color: $cellActiveBg;
+      color: $cellBgHover;
     }
   }
 
   &.guessed {
     pointer-events: none;
-    background-color: $greenBlue;
+    background-color: $whiteText;
     color: $cellBgHover;
   }
 }

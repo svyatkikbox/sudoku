@@ -2,6 +2,7 @@
 @import 'utils/mixins';
 
 @include font-face(Nordic, Nordic);
+@include font-face(lt, lt);
 
 * {
   padding: 0;
@@ -17,7 +18,7 @@
 
 html {
   @media screen and (max-width: 425px){
-    font-size: rem(14);
+    font-size: rem(13);
   }
 }
 
@@ -52,13 +53,11 @@ body {
 }
 
 .row {
-  margin: 0 auto;
   display: flex;
-  max-width: fit-content;
   text-align: center;
 }
 
-@import './blocks/errors';
+@import './blocks/message';
 @import './blocks/menu';
 @import './blocks/lives';
 @import './blocks/cell';

@@ -1,6 +1,7 @@
 import MakeMatrix from './MakeMatrix';
 import HideCells from './HideCells';
 import ShowMatrix from './ShowMatrix';
+import Text from './Text';
 
 export default function Play() {
   // Проверка ? существуют ли уже сохраненные настройки игры
@@ -49,28 +50,25 @@ export default function Play() {
     const lives = document.querySelector('.lives'); // кол-во жизней
     let guessed = 0; // кол-во угаданных ячеек
 
-    const Error = () => { // каждый раз после изменения текста ошибки будет запускаться setTimeout
-      const errorText = document.querySelector('.error'); // сообщения об ошибках для пользователя
-
-      return new Proxy(errorText, {
-        set(errorText, innerText, val) {
-          errorText.innerText = val;
-
+    const Message = () => { // каждый раз после изменения текста ошибки будет запускаться setTimeout
+      const message = document.querySelector('.message'); // сообщения об ошибках для пользователя
+      return new Proxy(message, {
+        set(message, innerText, val) {
+          message.innerText = val;
+          message.classList.add('show');
           setTimeout(() => {
-            errorText.innerText = '';
-            if (val === 'Попробуй еще раз! Генерирую новую доску...' || val === 'Доска разгадана! Генерируется новая...') {
+            message.classList.remove('show');
+            // message.innerText = '';
+            if (val === Text.lose || val === Text.victory) {
               Play();
             }
-
           }, 2000);
-
           return true;
-
         }
       });
     };
 
-    const errorText = Error();
+    const message = Message();
 
     HideCells(Matrix, settings); // удаляет из матрицы кол-во ячеек, исходя из выбора сложности
     ShowMatrix(Matrix, '.board'); // рисуется матрица на доске
@@ -105,26 +103,26 @@ export default function Play() {
 
           if (numberContent !== copyMatrix[quizMatrixPositionX][quizMatrixPositionY]) { // если выбранная цифра не совпадает со значением настоящим
             if (!lives.firstChild) { // если не осталось больше жизней перезапускаем
-              errorText.innerText = 'Попробуй еще раз! Генерирую новую доску...';
+              message.innerText = Text.lose;
             } else {
               lives.firstChild.remove(); // убираем сердечко
-              errorText.innerText = 'Уууууупс...';
+              message.innerText = Text.error;
             }
 
           } else { // если введенное значение оказалось верным
             guessed++;
 
-            activeQuiz.classList.add('guessed');
             activeQuiz.classList.remove('active');
-            errorText.innerText = 'Отличная работа!';
+            activeQuiz.classList.add('guessed');
+            message.innerText = Text.success;
 
             if (guessed === settings.difficulty) {
-              errorText.innerText = 'Доска разгадана! Генерируется новая...';
+              message.innerText = Text.victory;
             }
           }
 
         } else { // просим выбрать поле для заполнения
-          errorText.innerText = 'Выберите пустую ячейку для вставки значения';
+          message.innerText = Text.chooseEmpty;
         }
       }
     }

@@ -13,8 +13,10 @@ $cellBorder: #010000;
 $cellColoredBg: #6b0702;
 $cellQuizBg: #171717;
 $cellActiveBg: #ccc;
+$cellBorderBoard: 2px solid $cellBorder;
 
 $errorTextColor: crimson;
+$errorBgColor: $whiteText;
 
 $boardShadow: #0100006b;
 

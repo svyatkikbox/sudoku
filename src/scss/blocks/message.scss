@@ -1,4 +1,4 @@
-.error {
+.message {
   position: absolute;
   width: 100%;
   display: flex;
@@ -11,6 +11,22 @@
   letter-spacing: 0.8px;
   color: $errorTextColor;
   padding-top: rem(20);
+  background-color: $errorBgColor;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &.success {
+    background-color: lightseagreen;
+    color: white;
+  }
+
+  &.error {
+    background-color: crimson;
+    color: white;
+  }
 
   @media screen and (max-width: 425px){
     font-size: rem(12);
