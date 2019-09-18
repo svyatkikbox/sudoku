@@ -1,0 +1,50 @@
+body.light {
+  background-color: $lt-bodyBg;
+
+  .page-title {
+    color: $darkText;
+  }
+
+  .board {
+    box-shadow: none;
+  }
+
+  .menu {
+    background-color: $lt-menuBg;
+    color: $whiteText;
+    
+    &__toggle {
+      span {
+        background-color: $darkText;
+      }
+    }
+  }
+  
+  .cell {
+    color: $darkText;
+    background-color: $lt-cellBg;
+
+    &:hover {
+      background-color: $lt-cellBgHover;
+    }
+
+    &.colored {
+      background-color: $lt-cellColoredBg;
+      color: $whiteText;
+    }
+
+    &.quiz {
+      background-color: $lt-cellQuizBg;
+  
+      &.active {
+        background-color: $lt-cellActiveBg;
+        // color: $lt-cellBgHover;
+      }
+    }
+
+  }
+
+  .number {
+    color: $darkText;
+  }
+}

@@ -15,9 +15,23 @@ $cellQuizBg: #171717;
 $cellActiveBg: #ccc;
 $cellBorderBoard: 2px solid $cellBorder;
 
-$errorTextColor: crimson;
-$errorBgColor: $whiteText;
+$errorTextColor: #fff;
+$errorBgColor: $greenBlue;
 
 $boardShadow: #0100006b;
 
 $menuBtnBg: linear-gradient(-45deg, #0094a5, rgb(53, 113, 190));
+
+// Light Theme
+$lt-bodyBg: #fefefe;
+
+$darkText: #010000;
+
+$lt-cellBg: #BEBEBE;
+$lt-cellBgHover: #ffffff;
+$lt-cellBorder: #010000;
+$lt-cellQuizBg: #E8E8E8;
+$lt-cellActiveBg: #ccc;
+$lt-cellColoredBg: #374A6E;
+
+$lt-menuBg: #9c9c9c;
