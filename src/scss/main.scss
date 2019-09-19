@@ -34,18 +34,6 @@ body {
   position: relative;
 }
 
-.page-title {
-  font-size: rem(36);
-  color: $whiteText;
-  font-family: lt;
-  text-align: center;
-  margin: rem(5) 0 rem(20) 0;
-
-  @media screen and (max-width: 600px){
-    display: none;
-  }
-}
-
 .board {
   box-shadow: rem(0) rem(20) rem(20) rem(0) $boardShadow;
   width: fit-content;

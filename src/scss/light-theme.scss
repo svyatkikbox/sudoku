@@ -12,6 +12,22 @@ body.light {
   .menu {
     background-color: $lt-menuBg;
     color: $whiteText;
+
+    &__title {
+      color: $darkText;
+    }
+    
+    &__warn {
+      color: $darkText;
+    }
+
+    &__level-description {
+      color: $darkText;
+    }
+
+    &__btn {
+      color: $white;
+    }
     
     &__toggle {
       span {
