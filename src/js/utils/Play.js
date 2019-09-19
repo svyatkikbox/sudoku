@@ -10,9 +10,17 @@ export default function Play() {
   const menu = document.querySelector('.menu'); // главное меню с выбором сложности
   const toggleMenu = document.querySelector('.menu__toggle'); // гамбургер
   const levels = menu.querySelectorAll('.menu__btn'); // кнопки сложности
+  const switches = document.querySelector('.switches'); // переключатель темы сайта
+  const circle = document.querySelector('.circle');
+
+  switches.onclick = () => {
+    document.body.classList.toggle('light');
+    circle.classList.toggle('circle--dark');
+    circle.classList.toggle('circle--light');
+  };
 
   // Каждая кнопка задает сложность игры
-  // Определяя кол-во скрытых полей на доске
+  // Определяя кол-во скрытых полей на доске и доп жизней
   for (const level of levels) {
     level.onclick = () => {
       const difficulty = parseInt(level.value);
@@ -26,7 +34,7 @@ export default function Play() {
       // Скрываем меню
       menu.classList.toggle('show');
 
-      // Настройки сформированы, заново запускаем игру, чтобы произошел рендер доски
+      // Настройки сформированы, запускаем игру, чтобы произошел рендер доски
       Play();
     }
   }
@@ -40,8 +48,6 @@ export default function Play() {
     menu.classList.toggle('show');
   } else {
     // Если повторный, то генерируем доску с учетом существующих настроек
-    settings.difficulty = parseInt(settings.difficulty);
-    settings.lives = parseInt(settings.lives);
 
     const Matrix = MakeMatrix(); // главная матрица
     const numbers = document.querySelectorAll('.number'); // нижняя панель с цифрами для ввода
@@ -50,7 +56,10 @@ export default function Play() {
     const message = document.querySelector('.message'); // сообщения для пользователя
     let guessed = 0; // кол-во угаданных ячеек
 
-    const Message = (text, classes) => { // показываем сообщение для пользователя об ошибке или успехе
+    HideCells(Matrix, settings); // удаляет из матрицы кол-во ячеек, исходя из выбора сложности
+    ShowMatrix(Matrix, '.board'); // рисуется матрица на доске
+
+    const Message = (text, classes) => { // показ сообщений для пользователя
       message.innerText = text;
 
       message.classList.add('show');
@@ -66,15 +75,10 @@ export default function Play() {
 
       }, 3000);
 
-      return true;
-
     };
 
-    HideCells(Matrix, settings); // удаляет из матрицы кол-во ячеек, исходя из выбора сложности
-    ShowMatrix(Matrix, '.board'); // рисуется матрица на доске
-
     toggleMenu.classList.remove('active'); // так как страница не перезагружается, то кнопка "залипает" (остается активной)
-    toggleMenu.classList.add('show'); // при первом запуске игры гамбурге скрыт, при повторном надо его показать
+    toggleMenu.classList.add('show'); // при первом запуске игры гамбургер скрыт, при повторном надо его показать
 
     // Гамбургер открывает меню
     toggleMenu.onclick = () => {
@@ -84,7 +88,7 @@ export default function Play() {
 
     lives.innerHTML = ''; // очищаем жизни
 
-    for (let i = 0; i < settings.lives; i++) { // рисуем сердечки в зависимости от уровня сложности выбранного
+    for (let i = 0; i < settings.lives; i++) { // рисуем сердечки в зависимости от уровня сложности
       const live = document.createElement('div');
 
       live.classList.add('live');

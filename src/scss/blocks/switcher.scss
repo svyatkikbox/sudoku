@@ -1,0 +1,43 @@
+.switches {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  height: rem(30);
+  margin: 0 auto;
+  border: 1px solid $darkText;
+  border-radius: 1rem;
+  position: relative;
+  
+  .dark {
+    path {
+      fill: #c7c7c7;
+    }
+    
+  }
+  
+  .light {
+    margin-left: rem(4);
+    
+    path {
+      fill: #c7c7c7;
+    }
+  }
+}
+
+.circle {
+  position: absolute;
+  height: 105%;
+  width: rem(30);
+  border-radius: 50%;
+  background-color: $darkText;
+
+  &--dark {
+    left: -5%;
+  }
+
+  &--light {
+    right: -5%;
+  }
+
+}

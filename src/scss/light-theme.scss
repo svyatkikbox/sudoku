@@ -19,6 +19,18 @@ body.light {
       }
     }
   }
+
+  .switches {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dark, .light {
+    path {
+      fill: $darkText;
+    }
+  }
   
   .cell {
     color: $darkText;
