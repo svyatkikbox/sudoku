@@ -1,9 +1,9 @@
 import RowsFromSectors from './RowsFromSectors';
-import { ShakeRows, ShakeCols, Transposition } from './ShakeMatrix';
+import { ShakeRows, ShakeGroupRows, ShakeCols, Transposition } from './ShakeMatrix';
 import RandomInt from './RandomInt';
 
 export default () => {
-  const sectors = []; // массив всех секторов 3х3, из которого будет создаваться матрица построчно
+  let sectors = []; // массив всех секторов 3х3, из которого будет создаваться матрица построчно
 
   for (let i = 1; i <= 9; i++) {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // для каждого сектора создается новый массив
@@ -23,11 +23,13 @@ export default () => {
   }
 
   const matrix = RowsFromSectors(sectors); // Базовая раскладка судоку готова
-  const shakes = RandomInt(1, 11); // кол-во перетасовок базовой матрицы
+  const minShakes = RandomInt(3, 10);
+  const maxShakes = RandomInt(minShakes, 33);
+  const shakes = RandomInt(minShakes, maxShakes); // кол-во перетасовок базовой матрицы
 
   for (let shake = 0; shake <= shakes; shake++) {
-    const mode = RandomInt(0, 2); // выбирается метод перетасовки
-    [ShakeRows, ShakeCols, Transposition][mode](matrix);
+    const mode = RandomInt(0, 3); // выбирается метод перетасовки
+    [ShakeRows, ShakeGroupRows, ShakeCols, Transposition][mode](matrix);
   }
 
   return matrix;

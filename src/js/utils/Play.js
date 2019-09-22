@@ -2,7 +2,6 @@ import MakeMatrix from './MakeMatrix';
 import HideCells from './HideCells';
 import ShowMatrix from './ShowMatrix';
 import Text from './Text';
-import { ShakeRows } from './ShakeMatrix';
 
 export default function Play() {
   // Проверка ? существуют ли уже сохраненные настройки игры
@@ -53,12 +52,6 @@ export default function Play() {
     const Matrix = MakeMatrix(); // главная матрица
     const numbers = document.querySelectorAll('.number'); // нижняя панель с цифрами для ввода
     const copyMatrix = JSON.parse(JSON.stringify(Matrix)); // копия матрицы для контроля игры
-    
-    const copyMatrix2 = JSON.parse(JSON.stringify(copyMatrix));
-
-    console.log('copyMatrix:', copyMatrix);
-    console.log('copyMatrix shaked:', ShakeRows(copyMatrix2));
-
     const lives = document.querySelector('.lives'); // кол-во жизней
     const message = document.querySelector('.message'); // сообщения для пользователя
     let guessed = 0; // кол-во угаданных ячеек
@@ -80,7 +73,7 @@ export default function Play() {
           Play();
         }
 
-      }, 3000);
+      }, 2000);
 
     };
 

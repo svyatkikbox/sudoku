@@ -1,3 +1,5 @@
+import { ShakeGroupRows } from './ShakeMatrix';
+
 export default (sectors) => {
   const matrix = [
     [],
@@ -10,7 +12,7 @@ export default (sectors) => {
     [],
     []
   ];
-
+  
   // В массиве sectors построчно хранятся массивы, которые отвечают за секторы
   // в порядке сверху вниз, слева направо
   // 1 4 7
