@@ -1,18 +1,4 @@
-export const ShakeRows = (matrix) => {
-  // Перемешиваем каждые три строки между собой
-  for (let i = 0; i < matrix.length - 1; i++) {
-    if (i === 2 || i === 5) { // проверка для перескакиваний границ (чтобы перемешивались только внутри каждой тройки)
-      continue;
-    } else {
-      // Например в первых трех строках меняем сначала 1 со 2, 2 с 3
-      // таким образом порядок строк сменится с 1 2 3 на 2 3 1 и т.д
-      [matrix[i], matrix[i + 1]] = [matrix[i + 1], matrix[i]];
-    }
-  }
-
-  return matrix;
-
-}
+import RandomInt from './RandomInt';
 
 export const ShakeCols = (matrix) => {
   // Перемешиваем каждые три колонки между собой
@@ -52,4 +38,28 @@ export const Transposition = (matrix) => {
 
   return Tmatrix;
 
+}
+
+export const ShakeRows = (matrix) => {
+
+  for (let i = 0; i < matrix.length; i++) {
+  
+    if (i <= 2) {
+      const changeIdx = RandomInt(0,2);
+      [matrix[i], matrix[changeIdx]] = [matrix[changeIdx], matrix[i]];
+    }
+    
+    if (i > 2 && i <= 5) {
+      const changeIdx = RandomInt(3,5);
+      [matrix[i], matrix[changeIdx]] = [matrix[changeIdx], matrix[i]];
+    }
+    
+    if (i > 5) {
+      const changeIdx = RandomInt(6,8);
+      [matrix[i], matrix[changeIdx]] = [matrix[changeIdx], matrix[i]];
+    }
+    
+  }
+
+  return matrix;
 }
