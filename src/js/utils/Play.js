@@ -2,6 +2,7 @@ import MakeMatrix from './MakeMatrix';
 import HideCells from './HideCells';
 import ShowMatrix from './ShowMatrix';
 import Text from './Text';
+import { ShakeCols } from './ShakeMatrix';
 
 export default function Play() {
   // Проверка ? существуют ли уже сохраненные настройки игры

@@ -21,29 +21,30 @@ import RandomInt from './RandomInt';
 // }
 
 export const ShakeCols = (matrix) => {
-  const copy = JSON.parse(JSON.stringify(matrix));
-  console.log(copy);
-
   const shakedPairs = new Map;
 
   // Перемешиваем колонки в группах-тройках между собой
   for (let i = 0; i < matrix.length; i++) {
     if (i <= 2) {
-      shakedPairs.set(i, RandomInt(0,2));
+      shakedPairs.set(RandomInt(0, 2), i);
     }
-    
-    if (i > 2 && i<= 5) {
-      shakedPairs.set(i, RandomInt(3,5));
+
+    if (i > 2 && i <= 5) {
+      shakedPairs.set(RandomInt(3, 5), i);
     }
-    
+
     if (i > 5) {
-      shakedPairs.set(i, RandomInt(6,8));
+      shakedPairs.set(RandomInt(6, 8), i);
     }
 
   }
 
-  console.log('shakedPairs:', shakedPairs);
-  
+  shakedPairs.forEach((to, from) => {
+    for (let i = 0; i < matrix.length; i++) {
+      [matrix[i][to], matrix[i][from]] = [matrix[i][from], matrix[i][to]];
+    }
+  });
+
   return matrix;
 
 }
@@ -73,17 +74,17 @@ export const ShakeRows = (matrix) => {
 
   for (let i = 0; i < matrix.length; i++) {
     if (i <= 2) {
-      const changeIdx = RandomInt(0,2);
+      const changeIdx = RandomInt(0, 2);
       [matrix[i], matrix[changeIdx]] = [matrix[changeIdx], matrix[i]];
     }
-    
+
     if (i > 2 && i <= 5) {
-      const changeIdx = RandomInt(3,5);
+      const changeIdx = RandomInt(3, 5);
       [matrix[i], matrix[changeIdx]] = [matrix[changeIdx], matrix[i]];
     }
-    
+
     if (i > 5) {
-      const changeIdx = RandomInt(6,8);
+      const changeIdx = RandomInt(6, 8);
       [matrix[i], matrix[changeIdx]] = [matrix[changeIdx], matrix[i]];
     }
   }
@@ -94,16 +95,16 @@ export const ShakeRows = (matrix) => {
 
 export const ShakeGroupRows = (matrix) => {
   // выполняет роль тасовщика строковых групп-троек
-  
+
   const firstTrio = matrix.slice(0, 3);
   const secondTrio = matrix.slice(3, 6);
   const thirdTrio = matrix.slice(6, 9);
-  
+
   let shakedMatrix = [];
   let rowsTrios = [firstTrio, secondTrio, thirdTrio];
 
   for (let i = 0; i < rowsTrios.length; i++) {
-    let randIdx = RandomInt(0, rowsTrios.length - 1); 
+    let randIdx = RandomInt(0, rowsTrios.length - 1);
     [rowsTrios[i], rowsTrios[randIdx]] = [rowsTrios[randIdx], rowsTrios[i]];
   }
 
