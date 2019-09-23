@@ -1,5 +1,3 @@
-import { ShakeGroupRows } from './ShakeMatrix';
-
 export default (sectors) => {
   const matrix = [
     [],
@@ -29,9 +27,7 @@ export default (sectors) => {
   // x x x | x x x | x x x
   // x x x | x x x | x x x
   for (let i = 0; i < sectors.length; i++) {
-    const firstTrio = sectors[i].slice(0, 3);
-    const secondTrio = sectors[i].slice(3, 6);
-    const thirdTrio = sectors[i].slice(6, 9);
+    const [firstTrio, secondTrio, thirdTrio] = [sectors[i].slice(0, 3), sectors[i].slice(3, 6), sectors[i].slice(6, 9)];
 
     // первые три строки будущей матрицы образуют сектора под номерами 1 4 7
     // их индексы в массиве sectors - 0 3 6 соответственно

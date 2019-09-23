@@ -1,5 +1,5 @@
 import RowsFromSectors from './RowsFromSectors';
-import { ShakeRows, ShakeGroupRows, ShakeCols, Transposition } from './ShakeMatrix';
+import { ShakeRows, ShakeGroupRows, ShakeCols, ShakeGroupCols, Transposition } from './ShakeMatrix';
 import RandomInt from './RandomInt';
 
 export default () => {
@@ -29,7 +29,7 @@ export default () => {
 
   for (let shake = 0; shake <= shakes; shake++) {
     const mode = RandomInt(0, 3); // выбирается метод перетасовки
-    [ShakeRows, ShakeGroupRows, ShakeCols, Transposition][mode](matrix);
+    [ShakeRows, ShakeGroupRows, ShakeCols, ShakeGroupCols, Transposition][mode](matrix);
   }
 
   return matrix;
