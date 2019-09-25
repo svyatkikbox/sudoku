@@ -9,15 +9,24 @@
   border-radius: 1rem;
   position: relative;
   cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    .dark, .light {
+      transform: rotateZ(-120deg);
+      transition-duration: 0.5s;
+    }
+  }
   
   .dark {
+    z-index: 2;
     path {
       fill: #c7c7c7;
     }
-    
   }
   
   .light {
+    z-index: 2;
     margin-left: rem(4);
     
     path {
@@ -27,6 +36,7 @@
 }
 
 .circle {
+  z-index: 3;
   position: absolute;
   height: 105%;
   width: rem(30);

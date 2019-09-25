@@ -3,5 +3,6 @@ export default {
   success: 'Отлично',
   victory: 'Доска решена! Создается новая',
   lose: 'Попробуй еще раз',
-  chooseEmpty: 'Выбери пустую ячейку'
+  chooseEmpty: 'Выбери пустую ячейку',
+  chooseQuiz: 'Выбери ячейку для очистки'
 }

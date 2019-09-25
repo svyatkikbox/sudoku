@@ -2,6 +2,8 @@ import MakeMatrix from './MakeMatrix';
 import HideCells from './HideCells';
 import ShowMatrix from './ShowMatrix';
 import Text from './Text';
+import Controls from './Controls';
+import Message from './Message';
 
 export default function Play() {
   // Проверка ? существуют ли уже сохраненные настройки игры
@@ -53,29 +55,11 @@ export default function Play() {
     const numbers = document.querySelectorAll('.number'); // нижняя панель с цифрами для ввода
     const copyMatrix = JSON.parse(JSON.stringify(Matrix)); // копия матрицы для контроля игры
     const lives = document.querySelector('.lives'); // кол-во жизней
-    const message = document.querySelector('.message'); // сообщения для пользователя
     let guessed = 0; // кол-во угаданных ячеек
 
+    Controls(); // Запускаем функционал кнопок
     HideCells(Matrix, settings); // удаляет из матрицы кол-во ячеек, исходя из выбора сложности
     ShowMatrix(Matrix, '.board'); // рисуется матрица на доске
-
-    const Message = (text, classes) => { // показ сообщений для пользователя
-      message.innerText = text;
-
-      message.classList.add('show');
-      message.classList.add(...classes);
-
-      setTimeout(() => {
-        message.classList.remove('show');
-        message.classList.remove(...classes);
-
-        if (text === Text.lose || text === Text.victory) { // в случае сообщения о победе/проигрыше перезапускать игру
-          Play();
-        }
-
-      }, 2000);
-
-    };
 
     toggleMenu.classList.remove('active'); // так как страница не перезагружается, то кнопка "залипает" (остается активной)
     toggleMenu.classList.add('show'); // при первом запуске игры гамбургер скрыт, при повторном надо его показать

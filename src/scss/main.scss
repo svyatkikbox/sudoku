@@ -10,7 +10,7 @@
   margin: 0;
   box-sizing: border-box;
   transition-property: background-color color;
-  transition-duration: 0.5s;
+  transition-duration: 0.25s;
   
   &::after, &::before {
     padding: 0;
@@ -52,6 +52,7 @@ body {
 @import './blocks/message';
 @import './blocks/switcher';
 @import './blocks/menu';
+@import './blocks/controls';
 @import './blocks/lives';
 @import './blocks/cell';
 @import './blocks/numbers';

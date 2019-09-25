@@ -40,11 +40,11 @@ body.light {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .dark, .light {
-    path {
-      fill: $darkText;
+    
+    .dark, .light {
+      path {
+        fill: $darkText;
+      }
     }
   }
   
@@ -63,6 +63,10 @@ body.light {
 
     &.quiz {
       background-color: $lt-cellQuizBg;
+
+      &:hover {
+        background-color: $lt-cellBgHover;
+      }
   
       &.active {
         background-color: $lt-cellActiveBg;
@@ -74,4 +78,11 @@ body.light {
   .number {
     color: $darkText;
   }
+
+  .clear {
+    path {
+      fill: $darkText;
+    }
+  }
+
 }
