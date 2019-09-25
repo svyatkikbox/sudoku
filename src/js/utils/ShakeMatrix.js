@@ -76,7 +76,7 @@ export const ShakeRows = (matrix) => {
 
 export const ShakeGroupRows = (matrix) => {
   // перемешивает строковые группы-тройки
-  const [firstTrio, secondTrio, thirdTrio] = [matrix.slice(0,3), matrix.slice(3,6), matrix.slice(6,9)];
+  const [firstTrio, secondTrio, thirdTrio] = [matrix.slice(0, 3), matrix.slice(3, 6), matrix.slice(6, 9)];
 
   let shakedMatrix = [];
   let rowsTrios = [firstTrio, secondTrio, thirdTrio];
@@ -97,28 +97,36 @@ export const ShakeGroupRows = (matrix) => {
 export const ShakeGroupCols = (matrix) => {
   // перемешивает группы-тройки столбцов
   let order = new Set;
-  
+
   // Создаем новый порядок
   while (order.size !== 3) {
     order.add(RandomInt(0, 2));
   }
-  
+
   order = Array.from(order);
-  
+
   // Меняем исходную матрицу согласно новому порядку
   for (let i = 0; i < matrix.length; i++) {
-    const [firstTrio, secondTrio, thirdTrio] = [matrix[i].slice(0,3), matrix[i].slice(3,6), matrix[i].slice(6,9)];
-    
+    const [firstTrio, secondTrio, thirdTrio] = [matrix[i].slice(0, 3), matrix[i].slice(3, 6), matrix[i].slice(6, 9)];
+
     let rowsTrios = [firstTrio, secondTrio, thirdTrio];
     let newRow = [];
-    
+
     order.forEach((trioIdx) => {
       newRow = [...newRow, ...rowsTrios[trioIdx]];
     });
-    
+
     [matrix[i]] = [newRow];
   }
 
   return matrix;
 
 }
+
+export default [
+  ShakeRows,
+  ShakeCols,
+  Transposition,
+  ShakeGroupRows,
+  ShakeGroupCols
+];
