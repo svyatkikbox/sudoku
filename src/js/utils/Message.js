@@ -1,4 +1,5 @@
 import Text from './Text';
+import Play from './Play';
 
 export default (text, classes) => { // показ сообщений для пользователя
   const message = document.querySelector('.message'); // сообщения для пользователя
